@@ -1,0 +1,190 @@
+/* ==========================================================
+   FinançasFácil – Estilos personalizados
+   Complementa o Tailwind CSS com animações e utilitários
+   ========================================================== */
+
+/* ---------- VARIÁVEIS DE TEMA ---------- */
+:root {
+  --color-green:   #22c55e;
+  --color-yellow:  #f59e0b;
+  --color-red:     #ef4444;
+  --color-indigo:  #6366f1;
+  --radius-card:   1rem;
+  --shadow-card:   0 2px 12px rgba(0,0,0,0.06);
+}
+
+/* ---------- SCROLL SUAVE ---------- */
+html { scroll-behavior: smooth; }
+
+/* Remover setas dos inputs number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+input[type="number"] { -moz-appearance: textfield; }
+
+/* ---------- ANIMAÇÃO SLIDE-UP (modais) ---------- */
+@keyframes slideUp {
+  from { transform: translateY(60px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.slide-up { animation: slideUp 0.28s cubic-bezier(0.34,1.56,0.64,1) both; }
+
+/* ---------- ANIMAÇÃO FADE-IN (listas) ---------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.22s ease both; }
+
+/* ---------- CARD DE SAÚDE FINANCEIRA – gradientes ---------- */
+
+/* Verde: situação OK (< 70% do salário gasto) */
+.health-green {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+}
+/* Amarelo: atenção (70–90%) */
+.health-yellow {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+/* Vermelho: risco (> 90% ou saldo negativo) */
+.health-red {
+  background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+}
+
+/* ---------- BARRA DE NAVEGAÇÃO INFERIOR ---------- */
+#bottom-nav {
+  /* Garante largura máxima centralizada igual ao conteúdo */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 448px;   /* max-w-md = 28rem = 448px */
+}
+
+/* Botão de navegação – estado padrão */
+.nav-btn {
+  color: #9ca3af;          /* text-gray-400 */
+  font-size: 0.65rem;
+}
+.nav-btn i { transition: transform 0.2s; }
+
+/* Botão de navegação – ativo */
+.nav-btn.active-nav {
+  color: #6366f1;          /* indigo-500 */
+}
+.nav-btn.active-nav i {
+  transform: scale(1.15);
+}
+
+/* ---------- FILTROS DE PERÍODO (aba Despesas) ---------- */
+.filter-btn {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+.dark .filter-btn {
+  background: #374151;
+  color: #9ca3af;
+}
+.filter-btn.active-filter {
+  background: #6366f1;
+  color: #ffffff;
+}
+
+/* ---------- CARD DE DESPESA ---------- */
+.expense-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.dark .expense-card {
+  background: #1f2937;  /* gray-800 */
+}
+.expense-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* Badges de tipo */
+.badge-fixa    { background:#dbeafe; color:#1d4ed8; }
+.badge-variavel{ background:#fef3c7; color:#92400e; }
+.dark .badge-fixa    { background:#1e3a5f; color:#93c5fd; }
+.dark .badge-variavel{ background:#3b2a0a; color:#fcd34d; }
+
+/* Badges de categoria */
+.badge-necessidade{ background:#dcfce7; color:#15803d; }
+.badge-desejo     { background:#ede9fe; color:#6d28d9; }
+.badge-economia   { background:#e0f2fe; color:#0369a1; }
+.dark .badge-necessidade{ background:#14532d; color:#86efac; }
+.dark .badge-desejo     { background:#2e1065; color:#c4b5fd; }
+.dark .badge-economia   { background:#0c2e4a; color:#7dd3fc; }
+
+/* ---------- CARD DE DICA INTELIGENTE ---------- */
+.tip-card {
+  border-radius: 0.875rem;
+  padding: 0.875rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+.tip-success { background: #f0fdf4; color: #166534; border-left: 3px solid #22c55e; }
+.tip-warning { background: #fffbeb; color: #92400e; border-left: 3px solid #f59e0b; }
+.tip-danger  { background: #fef2f2; color: #991b1b; border-left: 3px solid #ef4444; }
+.tip-info    { background: #eff6ff; color: #1e40af; border-left: 3px solid #3b82f6; }
+
+.dark .tip-success { background: #052e16; color: #86efac; }
+.dark .tip-warning { background: #2a1700; color: #fcd34d; }
+.dark .tip-danger  { background: #2d0a0a; color: #fca5a5; }
+.dark .tip-info    { background: #0d1f3c; color: #93c5fd; }
+
+/* ---------- BARRA DE PROGRESSO REGRA 50/30/20 ---------- */
+.rule-bar-track {
+  height: 8px;
+  border-radius: 99px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+.dark .rule-bar-track { background: #374151; }
+.rule-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.7s cubic-bezier(0.34,1.2,0.64,1);
+}
+
+/* ---------- TOAST ---------- */
+#toast {
+  min-width: 200px;
+  text-align: center;
+  pointer-events: none;
+}
+#toast.show {
+  display: block !important;
+  animation: fadeIn 0.2s ease;
+}
+
+/* ---------- SCROLLBAR FINA (webkit) ---------- */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 99px; }
+.dark ::-webkit-scrollbar-thumb { background: #4b5563; }
+
+/* ---------- RESPONSIVO: telas maiores ---------- */
+@media (min-width: 640px) {
+  /* Em tablets/notebooks: centraliza o card principal */
+  #app-main, #bottom-nav {
+    box-shadow: 0 0 40px rgba(0,0,0,0.08);
+  }
+}
+
+/* ---------- INPUT DATE no dark mode ---------- */
+.dark input[type="date"] {
+  color-scheme: dark;
+}
+
+/* ---------- SELECT no dark mode ---------- */
+.dark select option { background: #1f2937; }
+
+/* ---------- TRANSIÇÃO SUAVE de abas ---------- */
+.tab-content {
+  animation: fadeIn 0.2s ease;
+}
